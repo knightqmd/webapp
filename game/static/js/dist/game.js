@@ -59,7 +59,7 @@ class GameDownload{
         this.$download.click(function(){
             console.log("download");
             outer_this.root.menu.hide();
-            outer_this.root.playground.show();
+            outer_this.root.$download.show();
         });
 
         this.$relatedResources.click(function(){
@@ -69,7 +69,7 @@ class GameDownload{
         this.$check.click(function(){
             console.log("check");
             outer_this.root.menu.hide();
-            outer_this.root.check.show();
+            outer_this.root.playground.show();
         });
 
         this.$settings.click(function(){
@@ -92,7 +92,6 @@ class GameDownload{
         `);
         this.hide();
         this.root.$game.append(this.$playground);
-        this.start();
     }
 
     show(){  // 显示游戏界面
@@ -112,6 +111,7 @@ class GameDownload{
         this.$game = $('#' +id)
         this.menu = new GameMenu(this)
         this.playground = new GamePlayground(this)
+        this.$download = new GameDownload(this)
         console.log("create game web")
     }
 }

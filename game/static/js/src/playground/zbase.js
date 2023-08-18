@@ -8,7 +8,6 @@ class GamePlayground{
         `);
         this.hide();
         this.root.$game.append(this.$playground);
-        this.start();
     }
 
     show(){  // 显示游戏界面

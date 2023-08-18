@@ -37,7 +37,7 @@ class GameMenu{
         this.$download.click(function(){
             console.log("download");
             outer_this.root.menu.hide();
-            outer_this.root.playground.show();
+            outer_this.root.$download.show();
         });
 
         this.$relatedResources.click(function(){
@@ -47,7 +47,7 @@ class GameMenu{
         this.$check.click(function(){
             console.log("check");
             outer_this.root.menu.hide();
-            outer_this.root.check.show();
+            outer_this.root.playground.show();
         });
 
         this.$settings.click(function(){

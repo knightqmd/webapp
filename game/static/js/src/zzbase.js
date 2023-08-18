@@ -4,6 +4,7 @@ class Game{
         this.$game = $('#' +id)
         this.menu = new GameMenu(this)
         this.playground = new GamePlayground(this)
+        this.$download = new GameDownload(this)
         console.log("create game web")
     }
 }
