@@ -1,5 +1,5 @@
 #!/bin/bash
-JS_PATH=/home/qmd/app/game/static/js/
+JS_PATH=/home/qmd/webapp/game/static/js/
 JS_PATH_DIST=${JS_PATH}dist/
 JS_PATH_SRC=${JS_PATH}src/
 

@@ -4,3 +4,122 @@
     background-image: url("/static/image/menu/background.jpg");
     background-size: 100% 100%;
 }
+
+.game-menu-field{
+    width: 25vw;
+    position: relative;
+    top:30vh;
+    left: 19vw;
+    /* background-color: rgb(153, 208, 218); */
+}
+.game-menu-field-download{
+    display: block;
+    width: 23vw;
+    height: 10vh;
+    color:#000000;
+    text-decoration: none;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 4vw;
+    margin-bottom: 2vh;
+    font-style: italic;
+    padding: 0.5vh;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.game-menu-field-download:hover{
+    background-color: rgba(77, 159, 226, 0.534);
+    transform: scale(1.1);
+    transition: 200ms;
+}
+.game-menu-field-check{
+    display: block;
+    width: 23vw;
+    height: 10vh;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 4vw;
+    margin-bottom: 2vh;
+    font-style: italic;
+    padding: 0.5vh;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.game-menu-field-check:hover{
+    background-color: rgba(77, 159, 226, 0.534);
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.game-menu-field-settings{
+    display: block;
+    width: 23vw;
+    height: 10vh;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 4vw;
+    margin-bottom: 2vh;
+    font-style: italic;
+    padding: 0.5vh;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.game-menu-field-settings:hover{
+    background-color: rgba(77, 159, 226, 0.534);
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+.game-menu-field-related-resources{
+    display: block;
+    width: 23vw;
+    height: 10vh;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 4vw;
+    margin-bottom: 2vh;
+    font-style: italic;
+    padding: 0.5vh;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.game-menu-field-related-resources:hover{
+    background-color: rgba(77, 159, 226, 0.534);
+    transform: scale(1.1);
+    transition: 200ms;
+}
+
+
+/* Tooltip styles */
+.game-menu-field-download::before {
+    content: attr(data-hint);
+    position: absolute;
+    /* top: -50px; */
+    left: 150%;
+    transform: translateX(-50%);
+    /* background-color: rgb(0 0 0 / 0%); */
+    color: #fff;
+    padding: 1px 2px;
+    border-radius: 4px;
+    font-size: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    width: 20vw;
+    height: 3vh;
+}
+
+.game-menu-field-download:hover::before {
+    opacity: 1; /* Show the tooltip on hover */
+}
