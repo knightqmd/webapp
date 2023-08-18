@@ -26,5 +26,38 @@ class GameMenu{
         this.$relatedResources = this.$menu.find(".game-menu-field-related-resources");
 
         console.log("create game menu")
+
+        this.start();
+    }
+    start(){
+        this.add_listener();
+    }
+    add_listener(){
+        let outer_this = this;
+        this.$download.click(function(){
+            console.log("download");
+            outer_this.root.menu.hide();
+            outer_this.root.playground.show();
+        });
+
+        this.$relatedResources.click(function(){
+            console.log("related resources");
+        });
+
+        this.$check.click(function(){
+            console.log("check");
+            outer_this.root.menu.hide();
+            outer_this.root.check.show();
+        });
+
+        this.$settings.click(function(){
+            console.log("settings");
+        });
+    }
+    hide(){
+        this.$menu.hide();
+    }
+    show(){
+        this.$menu.show();
     }
 }

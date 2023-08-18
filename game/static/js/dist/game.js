@@ -1,4 +1,26 @@
-class GameMenu{
+class GameDownload{
+    constructor(root){
+        this.root = root;
+        this.$download = $(`
+        <div class="game-download">
+            link for the game!
+        </div>
+        `);
+        this.hide();
+        this.root.$game.append(this.$download);
+    }
+    show(){
+        this.$download.show();
+    }
+
+    hide(){
+        this.$download.hide();
+    }
+
+    start(){
+        this.show();
+    }
+}class GameMenu{
     constructor(root){
         this.root = root
         this.$menu = $(`
@@ -26,12 +48,70 @@ class GameMenu{
         this.$relatedResources = this.$menu.find(".game-menu-field-related-resources");
 
         console.log("create game menu")
+
+        this.start();
+    }
+    start(){
+        this.add_listener();
+    }
+    add_listener(){
+        let outer_this = this;
+        this.$download.click(function(){
+            console.log("download");
+            outer_this.root.menu.hide();
+            outer_this.root.playground.show();
+        });
+
+        this.$relatedResources.click(function(){
+            console.log("related resources");
+        });
+
+        this.$check.click(function(){
+            console.log("check");
+            outer_this.root.menu.hide();
+            outer_this.root.check.show();
+        });
+
+        this.$settings.click(function(){
+            console.log("settings");
+        });
+    }
+    hide(){
+        this.$menu.hide();
+    }
+    show(){
+        this.$menu.show();
+    }
+}class GamePlayground{
+    constructor(root){
+        this.root = root;
+        this.$playground = $(`
+        <div class="game-playground">
+        这是一个游戏界面
+        </div>
+        `);
+        this.hide();
+        this.root.$game.append(this.$playground);
+        this.start();
+    }
+
+    show(){  // 显示游戏界面
+        this.$playground.show();
+    }
+
+    hide(){  // 隐藏游戏界面
+        this.$playground.hide();
+    }
+    
+    start(){   // todo
+        this.show();
     }
 }class Game{
     constructor(id){
         this.id = id
         this.$game = $('#' +id)
         this.menu = new GameMenu(this)
+        this.playground = new GamePlayground(this)
         console.log("create game web")
     }
 }
