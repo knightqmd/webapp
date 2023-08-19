@@ -82,16 +82,72 @@ class GameDownload{
     show(){
         this.$menu.show();
     }
-}class GamePlayground{
+}
+
+let GAME_OBJECTS = [];
+
+class GameObject{
+    constructor(){
+        GAME_OBJECTS.push(this);
+        this.has_start_is_called = false; //是否调用过start
+        this.timedelta = 0; //每一帧的时间差
+    }
+
+    start(){ //初始化第一帧
+
+    }
+
+    update(){ //每一帧都会调用
+    
+    }
+    on_destory(){ //销毁时调用
+        
+    }
+
+    destory(){ //销毁, 从GAME_OBJECTS中移除
+        for(let i=0;i<GAME_OBJECTS.length;i++){
+            if(GAME_OBJECTS[i] == this){
+                GAME_OBJECTS.splice(i,1);
+                break;
+            }
+        }
+    }
+}
+
+let last_timestamp = 0;
+let GAME_ANIMATIONS = function(timestamp){
+    for(let i=0;i<GAME_OBJECTS.length;i++){
+        if(GAME_OBJECTS[i].has_start_is_called == false){
+            GAME_OBJECTS[i].start();
+            GAME_OBJECTS[i].has_start_is_called = true;
+        }else{
+            GAME_OBJECTS[i].timedelta = timestamp - last_timestamp;
+            GAME_OBJECTS[i].update();
+        }
+    }
+    last_timestamp = timestamp;
+    requestAnimationFrame(GAME_ANIMATIONS);
+}
+
+requestAnimationFrame(GAME_ANIMATIONS);
+class GamePlayground{
     constructor(root){
         this.root = root;
         this.$playground = $(`
         <div class="game-playground">
-        这是一个游戏界面
+        this is playground
         </div>
         `);
-        this.hide();
         this.root.$game.append(this.$playground);
+        this.width = this.$playground.width();
+        this.height = this.$playground.height();
+        console.log("playground"+this.width);
+
+
+        this.gamemap = new GameMap(this);
+        this.hide();
+
+        this.start();
     }
 
     show(){  // 显示游戏界面
@@ -105,7 +161,28 @@ class GameDownload{
     start(){   // todo
         this.show();
     }
-}class Game{
+}class GameMap extends GameObject{
+    constructor(playground){
+        super();
+        this.playground = playground;
+        this.$canvas = $("<canvas></canvas>");
+        this.ctx = this.$canvas[0].getContext("2d");
+        console.log("gamemap_playground:"+this.playground.width);
+        this.ctx.canvas.width = this.playground.width;
+        this.ctx.canvas.height = this.playground.height;
+        this.playground.$playground.append(this.$canvas);
+
+    }
+    start(){   
+    }
+    update(){
+        this.render();
+    }
+    render(){
+        this.ctx.fillStyle = "rgb(0,0,0))";
+        this.ctx.fillRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);
+    }
+}export class Game{
     constructor(id){
         this.id = id
         this.$game = $('#' +id)

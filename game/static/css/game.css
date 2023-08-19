@@ -123,3 +123,11 @@
 .game-menu-field-download:hover::before {
     opacity: 1; /* Show the tooltip on hover */
 }
+
+
+.game-playground{
+
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}

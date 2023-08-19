@@ -3,11 +3,19 @@ class GamePlayground{
         this.root = root;
         this.$playground = $(`
         <div class="game-playground">
-        这是一个游戏界面
+        this is playground
         </div>
         `);
-        this.hide();
         this.root.$game.append(this.$playground);
+        this.width = this.$playground.width();
+        this.height = this.$playground.height();
+        console.log("playground"+this.width);
+
+
+        this.gamemap = new GameMap(this);
+        this.hide();
+
+        this.start();
     }
 
     show(){  // 显示游戏界面
